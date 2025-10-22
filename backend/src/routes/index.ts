@@ -1,11 +1,13 @@
 import { Router } from 'express';
 import authRoutes from './auth.routes';
 import workspaceRoutes from './workspace.routes';
+import boardRoutes from './board.routes';
 
 const router = Router();
 
 router.use('/auth', authRoutes);
 router.use('/workspaces', workspaceRoutes);
+router.use('/boards', boardRoutes);
 
 // Health check
 router.get('/health', (req, res) => {
