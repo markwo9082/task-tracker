@@ -3,6 +3,9 @@ import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import Workspaces from './pages/Workspaces';
+import Boards from './pages/Boards';
+import KanbanBoard from './pages/KanbanBoard';
 
 const theme = createTheme({
   palette: {
@@ -22,11 +25,14 @@ function App() {
       <CssBaseline />
       <Router>
         <Routes>
-          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/" element={<Navigate to="/workspaces" replace />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="*" element={<Navigate to="/login" replace />} />
+          <Route path="/workspaces" element={<Workspaces />} />
+          <Route path="/workspaces/:workspaceId/boards" element={<Boards />} />
+          <Route path="/workspaces/:workspaceId/boards/:boardId" element={<KanbanBoard />} />
+          <Route path="*" element={<Navigate to="/workspaces" replace />} />
         </Routes>
       </Router>
     </ThemeProvider>
