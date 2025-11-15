@@ -12,7 +12,7 @@ router.use('/boards', boardRoutes);
 router.use('/tasks', taskRoutes);
 
 // Health check
-router.get('/health', (req, res) => {
+router.get('/health', (_req, res) => {
   res.json({
     success: true,
     message: 'Task Tracker API is running',

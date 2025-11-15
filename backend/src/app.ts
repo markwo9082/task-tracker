@@ -37,7 +37,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Request logging in development
 if (config.nodeEnv === 'development') {
-  app.use((req, res, next) => {
+  app.use((req, _res, next) => {
     logger.debug(`${req.method} ${req.url}`);
     next();
   });
@@ -47,7 +47,7 @@ if (config.nodeEnv === 'development') {
 app.use('/api', routes);
 
 // Root endpoint
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.json({
     message: 'Task Tracker API',
     version: '1.0.0',

@@ -141,7 +141,7 @@ async function main() {
   console.log('✓ Created lanes');
 
   // Create sample tasks
-  const task1 = await prisma.task.create({
+  await prisma.task.create({
     data: {
       boardId: board.id,
       laneId: todoLane.id,
@@ -229,7 +229,7 @@ async function main() {
     },
   });
 
-  const task4 = await prisma.task.create({
+  await prisma.task.create({
     data: {
       boardId: board.id,
       laneId: doneLane.id,
@@ -247,7 +247,7 @@ async function main() {
     },
   });
 
-  const task5 = await prisma.task.create({
+  await prisma.task.create({
     data: {
       boardId: board.id,
       laneId: todoLane.id,
