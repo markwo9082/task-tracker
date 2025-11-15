@@ -3,6 +3,10 @@ import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import Workspaces from './pages/Workspaces';
+import WorkspaceBoards from './pages/WorkspaceBoards';
+import BoardView from './pages/BoardView';
+import AppLayout from './components/AppLayout';
 
 const theme = createTheme({
   palette: {
@@ -22,11 +26,19 @@ function App() {
       <CssBaseline />
       <Router>
         <Routes>
-          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="*" element={<Navigate to="/login" replace />} />
+
+          {/* Protected routes with AppLayout */}
+          <Route element={<AppLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/workspaces" element={<Workspaces />} />
+            <Route path="/workspaces/:workspaceId/boards" element={<WorkspaceBoards />} />
+            <Route path="/boards/:boardId" element={<BoardView />} />
+          </Route>
+
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </Router>
     </ThemeProvider>
